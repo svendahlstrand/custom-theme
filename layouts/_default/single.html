@@ -13,7 +13,11 @@
   {{ .Content }}
 </content>
 <p>{{ partial "reply-by-email.html" . }}</p>
-
+{{- if gt .Date.Unix 1679470620 -}}
+<p>{{- partial "conversation-link.html" . -}}</p>
+{{- else -}}
+<p>{{- partial "conversation-link-legacy.html" . -}}</p>
+{{- end -}}
 <p>
   {{ range (.GetTerms "tags") }}
   <a href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
