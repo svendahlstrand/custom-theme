@@ -1,8 +1,8 @@
 {{ define "main" }}
-<div class="post h-entry">
+<div class="post h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
 
   <header class="post-header">
-    <span class="post-date"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span>
+    <a href="{{ .Permalink }}" class="post-date u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time> ∞</a>
     {{ if .Title }}
     <h2 class="p-name">{{ .Title }}</h2>
     {{ end }}
@@ -19,19 +19,23 @@
     {{ end }}
   </ul>
   {{ end }}
+
 </div>
-{{ if or (templates.Exists "partials/reply-by-email.html") (templates.Exists "partials/conversation-link.html") }}
+{{ if or (templates.Exists "partials/reply-by-email.html") (templates.Exists "partials/conversation-link.html") (templates.Exists "partials/plugin_tinylytics.html") }}
 <ul class="reply-buttons">
+{{ if templates.Exists "partials/plugin_tinylytics.html" }}
+      <li><button class="tinylytics_kudos">Kudos</button></li>
+{{ end }}
 {{ if templates.Exists "partials/reply-by-email.html" }}
-  <li>{{ partial "reply-by-email.html" . }}</li>
+    <li>{{ partial "reply-by-email.html" . }}</li>
 {{ end }}
 {{ if templates.Exists "partials/conversation-link.html" }}
-<!-- CUSTOM: Support for legacy conversations (old URLs). -->
-{{- if gt .Date.Unix 1679470620 -}}
-  <li>{{- partial "conversation-link.html" . -}}</li>
-{{- else -}}
-  <li>{{- partial "conversation-link-legacy.html" . -}}</li>
-{{- end -}}
+  <!-- CUSTOM: Support for legacy conversations (old URLs). -->
+  {{- if gt .Date.Unix 1679470620 -}}
+    <li>{{- partial "conversation-link.html" . -}}</li>
+  {{- else -}}
+    <li>{{- partial "conversation-link-legacy.html" . -}}</li>
+  {{- end -}}
 {{ end }}
 {{ end }}
 </ul>
