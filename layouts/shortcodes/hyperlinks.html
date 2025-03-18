@@ -14,9 +14,9 @@ Last updated {{ now | dateFormat "January 2, 2006" }}.
 
 <ul>
   {{- range $rss.channel.item -}}
-    {{- $url := urls.Parse .link -}}
+    {{- $url := urls.Parse (index .source "-url") -}}
     <li>
-      <a href="{{- .link -}}">{{- .title | htmlUnescape -}}</a><br>
+      <a href="{{- $url -}}">{{- .title | htmlUnescape -}}</a><br>
       <small>{{- $url.Hostname -}}</small>
     </li>
   {{- end -}}
