@@ -2,22 +2,21 @@
 {{- $rss := "" -}}
 {{- with resources.GetRemote $url -}}
   {{- with .Err -}}
-    {{- errorf "%s" . -}}
+    <pre>Oh, no, fetching of the links failed. Sorry. ¯\_(ツ)_/¯</pre>
   {{- else -}}
     {{- $rss = . | transform.Unmarshal -}}
+    Last updated {{ now | dateFormat "January 2, 2006" }}.
+
+    <ul>
+      {{- range $rss.channel.item -}}
+        {{- $url := urls.Parse (index .source "-url") -}}
+        <li>
+          <a href="{{- $url -}}">{{- .title | htmlUnescape -}}</a><br>
+          <small>{{- $url.Hostname -}}</small>
+        </li>
+      {{- end -}}
+    </ul>
   {{- end -}}
 {{- else -}}
-  {{- errorf "Unable to get remote resource %q" $url -}}
+  <pre>Oh, no, fetching of the links failed. Sorry. ¯\_(ツ)_/¯</pre>
 {{- end -}}
-
-Last updated {{ now | dateFormat "January 2, 2006" }}.
-
-<ul>
-  {{- range $rss.channel.item -}}
-    {{- $url := urls.Parse (index .source "-url") -}}
-    <li>
-      <a href="{{- $url -}}">{{- .title | htmlUnescape -}}</a><br>
-      <small>{{- $url.Hostname -}}</small>
-    </li>
-  {{- end -}}
-</ul>
