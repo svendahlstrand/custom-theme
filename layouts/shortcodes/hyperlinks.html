@@ -12,7 +12,7 @@
         {{- $url := urls.Parse (index .source "-url") -}}
         <li>
           <a href="{{- $url -}}">{{- .title | htmlUnescape -}}</a><br>
-          <small>{{- $url.Hostname -}}</small>
+          <small>{{- strings.TrimPrefix "www." $url.Hostname -}}</small>
         </li>
       {{- end -}}
     </ul>
