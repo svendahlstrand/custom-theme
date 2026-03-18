@@ -15,6 +15,7 @@ window.wander = {
   ],
   // Other Wander consoles that visitors can reach from your console.
   consoles: [
-    'https://susam.net/wander/'
+    'https://susam.net/wander/',
+    'https://dahlstrand.net/wander/'
   ],
 }
