@@ -1,5 +1,11 @@
-window.wander = {
-  // Websites and pages you recommend to other wanderers.
+const wander = {
+  // Other Wander consoles in my neighborhood.
+  consoles: [
+    'https://susam.net/wander/',
+    'https://dahlstrand.net/wander/'
+  ],
+
+  // My recommendations.
   pages: [
     'https://sannalund.se',
     'https://100r.ca/site/home.html',
@@ -12,10 +18,5 @@ window.wander = {
     'https://html.energy',
     'https://websitesite.xyz',
     'https://dahlstrand.net/'
-  ],
-  // Other Wander consoles that visitors can reach from your console.
-  consoles: [
-    'https://susam.net/wander/',
-    'https://dahlstrand.net/wander/'
-  ],
-}
+  ]
+};
