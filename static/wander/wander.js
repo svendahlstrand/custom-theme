@@ -18,5 +18,7 @@ const wander = {
     'https://html.energy',
     'https://websitesite.xyz',
     'https://dahlstrand.net/'
-  ]
+  ],
+  
+  ignore: []
 };
