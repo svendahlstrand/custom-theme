@@ -1,9 +1,9 @@
 {{- $url := $.Site.Params.custom_hyperlinks_feed -}}
 {{- $rss := "" -}}
-{{- with resources.GetRemote $url -}}
+{{- with try (resources.GetRemote $url) -}}
   {{- with .Err -}}
     <pre>Oh, no, fetching of the links failed. Sorry. ¯\_(ツ)_/¯</pre>
-  {{- else -}}
+  {{- else with .Value -}}
     {{- $rss = . | transform.Unmarshal -}}
     Last updated {{ now | dateFormat "January 2, 2006" }}.
 
@@ -16,7 +16,7 @@
         </li>
       {{- end -}}
     </ul>
+  {{- else -}}
+    <pre>Oh, no, fetching of the links failed. Sorry. ¯\_(ツ)_/¯</pre>
   {{- end -}}
-{{- else -}}
-  <pre>Oh, no, fetching of the links failed. Sorry. ¯\_(ツ)_/¯</pre>
 {{- end -}}
