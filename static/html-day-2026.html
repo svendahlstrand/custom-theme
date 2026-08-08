@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<!--
+“We don’t have to fall into the same category to be of equal value.”
+
+Becky Chambers, A Psalm for the Wild-Built
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>html-day-2026.html</title>
+
+<style>
+/*
+i know, i know, itʼs html day, not css day, but come on. cut me some slack. :)
+*/
+body {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-family: "Times New Roman", serif;
+}
+
+figure {
+  margin: 0;
+
+  overflow: hidden; /* this is a hack† */
+}
+
+model {
+  width: 100%;
+  height: auto;
+  background-color: white;
+
+  transform: scale(1.5); /* this too is a hack† */
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-size: 1rem;
+  font-style: italic;
+  position: relative; /* yep, you guessed it, a hack† */
+}
+
+article {
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+@media (min-width: 70ch) {
+  figure {
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 128ch) {
+  article {
+    columns: 2;
+    column-gap: 4ch;
+    column-width: 50ch;
+    max-width: 120ch;
+  }
+
+  figure {
+    max-width: 33%;
+  }
+}
+/*
+†: until i figure out how to properly set a bounding box in .usdz files,
+   scaling with css transforms will have to do.
+*/
+</style>
+
+<figure>
+  <model stagemode="orbit" width="1080" height="1080" poster="images/perzine-usdz-poster.jpg">
+    <source src="models/perzine.usdz" type="model/vnd.usdz+zip">
+    <video autoplay loop muted playsinline width="1080" height="1080" poster="images/perzine-mp4-poster.jpg">
+      <source src="videos/perzine.mp4" type="video/mp4">
+    </video>
+  </model>
+
+  <figcaption>
+    <p>
+    »now« is my <a href="https://en.wikipedia.org/wiki/Risograph">risoprinted</a> 8-page <a href="https://en.wikipedia.org/wiki/Perzine">perzine</a> about what i was doing and thinking about last winter. copies left—<a href="https://dahlstrand.net/now/">iʼll mail one to you for free</a>! also open to trades.
+  </figcaption>
+</figure>
+
+<article>
+<p>
+if your browser supports <a href="https://immersive-web.github.io/model-element/">the <i>&lt;model&gt;</i> element</a>, you will be able to interact with a 3d model above.
+
+if not, thereʼs a looping <del>gif</del> <i>&lt;video&gt;</i> as fallback.
+
+<p>
+this document was first <a href="https://en.wikipedia.org/wiki/Touch_(command)">touched</a> at 13.42 UTC+2 on <a href="https://2026.html.energy/">html day 2026</a>.
+
+iʼm typing from <i lang="sv">Idas park, Jönköping, Sweden</i>.
+
+<!--one sentence per line. (https://sive.rs/1s)-->
+
+thereʼs no html yet but it will come.
+
+saving the best for last.
+
+<p>
+i fucking love html, but my brain is currently percolating with non-html stuff and i was struggling to come up with a plan for today.
+
+but then, while waiting for the coffee to finish brewing, it hit me: letʼs play with the <i>&lt;model&gt;</i> element!
+
+so thatʼs what iʼm about to do.
+
+<p>
+actually, i took a break from typing just now, but you didnʼt notice, right?
+
+i took a break and 3d-scanned a copy of my zine, using the iphoneʼs <a href="https://en.wikipedia.org/wiki/Lidar">lidar</a> via <a href="https://dev.scaniverse.com/">scaniverse</a>.
+
+it turned out like shit, but thatʼs okay.
+
+<p>
+i also took a photo of the current <a href="images/overcast-html-energy.jpg">overcast-html-energy.jpg</a> here in the park.
+
+<p>
+now that the source material is gathered, hereʼs my plan:
+
+<ol>
+<li>export the scanned 3d model of the zine to a fitting file format.
+
+<li>author a <i>&lt;model&gt;</i> element to embed it in this document.
+
+<li>provide some kind of fallback (gif?) for browsers that donʼt support <i>&lt;model&gt;</i> yet.
+
+<li><del>draw</del> write the rest of the <del>owl</del> html.
+
+<li>publish.
+</ol>
+
+<p>
+i did it again, took a typing break without you noticing.
+
+i exported <a href="https://en.wikipedia.org/wiki/Universal_Scene_Description">a .usdz file</a> and compressed it using <a href="https://developer.apple.com/documentation/usd/creating-usd-files-for-apple-devices#Use-efficient-textures">the <i>usdcrush</i> command line tool</a>. after that, i exported a video animation of the model too.
+
+thereʼs now a first, rough, draft and a working 3d model i can play with in <a href="https://webkit.org/blog/17967/news-from-wwdc26-webkit-in-safari-27-beta/">safari 27 beta</a>. in browsers that donʼt  support the <i>&lt;model&gt;</i> element yet, thereʼs a looping <i>&lt;video&gt;</i> as fallback.
+
+<p>
+itʼs 14.47, iʼm packing up and going home.
+
+<p>
+…
+
+<p>
+okay, iʼm back. itʼs now 23.31 and this document is almost ready to be uploaded to my server. you should see a working, interactive 3d model at the top of this page <a href="https://caniuse.com/mdn-html_elements_model">if your browser supports it</a>.
+
+<p>
+take it for a spin! and feel free to view source to learn how itʼs done.
+</article>
+<!--
+awww, we who still view source, am I right? (♥ω♥*)
+-->
+</html>
